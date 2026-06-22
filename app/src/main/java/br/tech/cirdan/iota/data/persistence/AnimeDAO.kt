@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import br.tech.cirdan.iota.data.model.Anime
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AnimeDAO {
@@ -17,7 +16,7 @@ interface AnimeDAO {
     suspend fun insertAll(animeList: List<Anime>)
 
     @Query("SELECT * FROM animes WHERE malId = :id")
-    fun getAnime(id: Int): Flow<Anime>
+    suspend fun getAnime(id: Int): Anime?
 
     @Query("SELECT * FROM animes ORDER BY members DESC")
     fun searchAnime(): PagingSource<Int, Anime>

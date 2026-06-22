@@ -16,7 +16,10 @@ import br.tech.cirdan.iota.ui.feature.common.ErrorScreen
 import br.tech.cirdan.iota.ui.feature.common.LoadAnimeError
 
 @Composable
-fun AnimeScreen(viewModel: AnimeListViewModel = hiltViewModel()) {
+fun AnimeScreen(
+    viewModel: AnimeListViewModel = hiltViewModel(),
+    onAnimeClick: (Int) -> Unit
+) {
 
     val animeLazyItems = viewModel.animePagingFlow.collectAsLazyPagingItems()
 
@@ -30,7 +33,7 @@ fun AnimeScreen(viewModel: AnimeListViewModel = hiltViewModel()) {
                     if (animeLazyItems.itemCount == 0) {
                         AnimeListEmptyState()
                     } else {
-                        AnimeList(animeLazyItems)
+                        AnimeList(animeLazyItems, onAnimeClick)
                     }
                 }
                 is LoadState.Error -> {

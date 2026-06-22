@@ -1,6 +1,7 @@
 package br.tech.cirdan.iota.data.jikan
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 enum class AnimeSearchOrder(val value: String) {
@@ -41,4 +42,7 @@ interface JikanApi {
         @Query("sort") sort: AnimeSearchSort = AnimeSearchSort.DESC,
         @Query("sfw") sfw: Boolean = true
         ): AnimeList
+
+    @GET("${Endpoints.SEARCH_ANIME}/{id}")
+    suspend fun getAnimeById(@Path("id") id: Int): AnimeResponse
 }

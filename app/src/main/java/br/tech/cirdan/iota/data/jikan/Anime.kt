@@ -78,6 +78,11 @@ data class Anime(
     val year: Int
 )
 
+data class AnimeResponse(
+    @SerializedName("data")
+    val data: Anime
+)
+
 
 fun br.tech.cirdan.iota.data.jikan.Anime.toDomain() = br.tech.cirdan.iota.data.model.Anime(
     airing = this.airing,

@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.tech.cirdan.iota.ui.feature.anime.composables.AnimeDetailScreen
 import br.tech.cirdan.iota.ui.feature.animes.composables.AnimeScreen
 import kotlinx.serialization.Serializable
 
 @Serializable object AnimeListScreen
-@Serializable object AnimeDetailScreen
+@Serializable data class AnimeDetailScreen(val id: Int)
 
 
 @Composable
@@ -21,7 +22,12 @@ fun AppNavigation() {
         startDestination = AnimeListScreen,
     ) {
         composable<AnimeListScreen> {
-            AnimeScreen()
+            AnimeScreen(onAnimeClick = { id ->
+                navController.navigate(AnimeDetailScreen(id))
+            })
+        }
+        composable<AnimeDetailScreen> {
+            AnimeDetailScreen()
         }
     }
 }

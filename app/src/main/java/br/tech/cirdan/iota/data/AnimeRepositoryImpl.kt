@@ -124,4 +124,17 @@ class AnimeRepositoryImpl @Inject constructor(
             pagingSourceFactory = { database.animeDao().searchAnime() }
         ).flow
     }
+
+    override suspend fun getAnimeById(id: Int): Anime? {
+        val localAnime = database.animeDao().getAnime(id)
+        if (localAnime != null) return localAnime
+
+        return try {
+            val remoteAnime = jikanApi.getAnimeById(id).data.toDomain()
+            database.animeDao().insert(remoteAnime)
+            remoteAnime
+        } catch (e: Exception) {
+            null
+        }
+    }
 }
