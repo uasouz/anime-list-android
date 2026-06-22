@@ -24,7 +24,7 @@ Simple Android App using Jetpack Compose + Room + Hilt + Coil + Retrofit to cons
 
 1. Clone the repository:
    ```shell
-   git clone https://github.com/yourusername/iota.git
+   git clone https://github.com/uasouz/anime-list-android.git
    ```
 2. Open the project in Android Studio.
 3. Sync project with Gradle files.
