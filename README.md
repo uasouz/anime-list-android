@@ -2,8 +2,7 @@
 
 Simple Android App using Jetpack Compose + Room + Hilt + Coil + Retrofit to consume [Jikan API](https://jikan.moe/) to render a list of anime and show details when clicked.
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+<img src="img.png" width="250" /> <img src="img_1.png" width="250" />
 
 ## Libs used
 
